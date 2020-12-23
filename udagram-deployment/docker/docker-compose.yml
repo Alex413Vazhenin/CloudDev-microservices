@@ -1,0 +1,18 @@
+#WIP
+version: '3'
+
+services:
+  reverse:
+    image: 
+    ports:
+      - 80:80
+  backend-users:
+    image:
+    environment:
+  backend-feed:
+    image:
+    environment:
+  frontend:
+    image: 
+    ports:
+    - 80:80
