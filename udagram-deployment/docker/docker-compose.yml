@@ -2,16 +2,39 @@
 version: '3'
 
 services:
-  reverse:
+  reverseproxy:
     image: 
     ports:
       - 80:80
+    depends_on:
+      - backend-feed
+      - backend-users
   backend-users:
     image:
     environment:
+      POSTGRES_USERNAME: $POSTGRES_USERNAME
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
+      POSTGRES_DATABASE: $POSTGRES_DATABASE 
+      POSTGRES_HOST: $POSTGRES_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_MEDIA_BUCKET: $AWS_MEDIA_BUCKET
+      JWT_SECURE: $JWT_SECURE
+      HOST_IMG: $HOST_IMG
+      URL: "http://localhost:8080"
   backend-feed:
     image:
     environment:
+      POSTGRES_USERNAME: $POSTGRES_USERNAME
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
+      POSTGRES_DATABASE: $POSTGRES_DATABASE 
+      POSTGRES_HOST: $POSTGRES_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_MEDIA_BUCKET: $AWS_MEDIA_BUCKET
+      JWT_SECURE: $JWT_SECURE
+      HOST_IMG: $HOST_IMG
+      URL: "http://localhost:8100"
   frontend:
     image: 
     ports:
