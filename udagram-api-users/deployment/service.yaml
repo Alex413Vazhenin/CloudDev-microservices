@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: microservices-users
-  name: microservices-users
+    app: users
+  name: users
 spec:
   ports:
   - name: "8080"
     port: 8080
     targetPort: 8080
   selector:
-    app: microservices-users
+    app: users
