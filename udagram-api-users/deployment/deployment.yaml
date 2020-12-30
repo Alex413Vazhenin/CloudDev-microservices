@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: users
-  name: users
+    service: microservices-users
+  name: microservices-users
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: users
+      app: microservices-users
   template:
     metadata:
       labels:
-        app: users
-        service: users
+        app: microservices-users
+        service: microservices-users
     spec:
       containers:
-      - name: users
+      - name: microservices-users
         image: insaneall/microservices-users
         imagePullPolicy: Always  
         resources:

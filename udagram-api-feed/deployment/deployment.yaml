@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: feed
-  name: feed
+    service: microservices-feed
+  name: microservices-feed
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: feed
+      app: microservices-feed
   template:
     metadata:
       labels:
-        app: feed
-        service: feed
+        app: microservices-feed
+        service: microservices-feed
     spec:
       containers:
-      - name: feed
+      - name: microservices-feed
         image: insaneall/microservices-feed
         imagePullPolicy: Always  
         resources:
