@@ -2,21 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: microservices-frontend
-  name: microservices-frontend
+    app: udagram-frontend
+  name: udagram-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: microservices-frontend
+      app: udagram-frontend
   template:
     metadata:
       labels:
-        app: microservices-frontend
-        service: microservices-frontend
+        app: udagram-frontend
     spec:
       containers:
-      - name: microservices-frontend
+      - name: udagram-frontend
         image: insaneall/microservices-frontend
         imagePullPolicy: Always  
         ports:
