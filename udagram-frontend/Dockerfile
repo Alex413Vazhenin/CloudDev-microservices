@@ -10,3 +10,7 @@ COPY package*.json ./
 RUN npm ci
 # Bundle app source
 COPY . .
+RUN ionic build
+## Run 
+FROM nginx
+COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
