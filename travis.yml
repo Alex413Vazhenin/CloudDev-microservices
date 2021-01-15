@@ -1,4 +1,3 @@
-# safelist
 branches:
   only:
   - master
@@ -23,10 +22,13 @@ script:
 
   - docker build -t microservices-reverse-proxy ./reverse-proxy
   - docker tag microservices-reverse-proxy "$DOCKER_USERNAME"/microservices-reverse-proxy:latest
+
   - docker build -t microservices-feed ./udagram-api-feed
   - docker tag microservices-feed "$DOCKER_USERNAME"/microservices-feed:latest
+
   - docker build -t microservices-users ./udagram-api-users
   - docker tag microservices-users "$DOCKER_USERNAME"/microservices-users:latest
+  
   - docker build -t microservices-frontend ./udagram-frontend
   - docker tag microservices-frontend "$DOCKER_USERNAME"/microservices-frontend:latest
 
