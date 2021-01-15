@@ -1,3 +1,8 @@
+# safelist
+branches:
+  only:
+  - master
+
 language: node_js
 node_js:
   - 13
@@ -15,23 +20,9 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  # - docker-compose -f deployment/docker/docker-compose-build.yml build --parallel
 
   - docker build -t microservices-reverse-proxy ./reverse-proxy
   - docker tag microservices-reverse-proxy "$DOCKER_USERNAME"/microservices-reverse-proxy:latest
-  # - docker build -t microservices-feed ./udagram-api-feed
-  # - docker tag microservices-feed "$DOCKER_USERNAME"/microservices-feed:latest
-  # - docker build -t microservices-users ./udagram-api-users
-  # - docker tag microservices-users "$DOCKER_USERNAME"/microservices-users:latest
-  # - docker build -t microservices-frontend ./udagram-frontend
-  # - docker tag microservices-frontend "$DOCKER_USERNAME"/microservices-frontend:latest
-
-
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  # - docker-compose -f deployment/docker/docker-compose-build.yml push
-  # - docker push "$DOCKER_USERNAME"/microservices-feed
-  # - docker push "$DOCKER_USERNAME"/microservices-users
-  # - docker push "$DOCKER_USERNAME"/microservices-reverse-proxy
-  # - docker push "$DOCKER_USERNAME"/microservices-frontend
