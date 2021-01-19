@@ -11,6 +11,8 @@ RUN ci install
 # Bundle app source
 COPY . .
 RUN ionic build
+
+EXPOSE 8080
 ## Run 
 FROM nginx
 COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
